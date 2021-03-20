@@ -1,0 +1,58 @@
+What should defense take into account?
+  - PLVL
+  - MLVL
+  - AddedDEF (from armors)
+  - STR/DEX
+  - BUFFS
+
+Defense formula?
+
+(1.4 * STR + 0.4 * DEX + AddedDEF) * (1 + BUFFS/100) * (1 + DEBUFF/100)
+
+Example where: STR = 6 | DEX = 2 | AddedDEF = 3 | No buff | No debuff
+(1.4 * 6 + 0.4 * 2 + 3) * 1
+= 12.2 -> 12
+
+Example where: STR = 79 | DEX = 19 | AddedDEF = 19 | 20% | No debuff
+(1.4 * 79 + 0.4 * 19 + 19) * 1.2 * 0.9
+= 148.176 -> 148
+
+---------------
+
+MLVL%: are you lower or higher level than the monster?
+
+-0 to -5: 1
+-6 to -10 : 1.1
+-11 to -15 : 1.2
+-16 to -20 : 1.3
+-20 or lower : 1.5
+
++0 to +5: 1
++6 to +10 : 0.9
++11 to +15 : 0.8
++16 to +20 : 0.7
++20 or higher : 0.5
+
+---------------
+
+What should monster's damage take into account (min/max value)?
+  - MonsterATT
+  - PDEF
+  - MLVL%
+
+Monster damage formula?
+
+Maximum: MLVL% * (MonsterATT - PDEF)
+Minimum: 0.75 * [MLVL% * (MonsterATT - PDEF)]
+
+Example where: MonsterATT = 20 | PDEF = 12 | MLVL% = 1
+Minimum: 0.75 * [1 * (20 - 12)]
+= 6
+Maximum: 1 * (20 - 12)
+= 8
+
+Example where: MonsterATT = 175 | PDEF = 148 | MLVL% = 1.1
+Minimum: 0.75 * [1.1 * (175 - 148)]
+= 22.275 -> 22
+Maximum: 1 * (20 - 12)
+= 29.7 -> 30
