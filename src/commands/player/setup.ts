@@ -30,7 +30,7 @@ export default class SetupCommand extends Command {
 
   public async exec(message: Message, { className, select }: { className: string, select: string }): Promise<Message | Message[]> {
     if (!className) return message.util!.send(`Classes available -> \`${pClasses.map(e => e.name).join('|')}\`\nAdd the class name to get more information about this class. If you want to select this class, add \`--select\` after the name of the class.`);
-    if (!className.toLowerCase().match(/^clerc)$/)) return message.util!.send(`This class doesn\'t exist (classes available -> \`${pClasses.map(e => e.name).join('|')}\`).`);
+    if (!className.toLowerCase().match(/^(clerc)$/)) return message.util!.send(`This class doesn\'t exist (classes available -> \`${pClasses.map(e => e.name).join('|')}\`).`);
 
     const classInfo = pClasses.find(e => e.name.toLowerCase() == className.toLowerCase());
     const classImg: any = new MessageAttachment(`./src/assets/playerClasses/${className.toLowerCase()}.png`);
