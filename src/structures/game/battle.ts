@@ -1,1 +1,3 @@
-export default class Battle {}
+import Mechanics from "./mechanics";
+
+export default class Battle extends Mechanics {}

@@ -164,3 +164,4 @@ build/
 pdTemplates/
 /src/structures/game/data/
 test.ts
+tutorials.json
