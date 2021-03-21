@@ -1,0 +1,12 @@
+[
+  {
+    "name": "start",
+    "content": "This is the first guide!",
+    "advanced": "This is the first guide! But with the advanced part!"
+  },
+  {
+    "name": "end",
+    "content": "This is the end guide!",
+    "advanced": "This is the end guide! But with the advanced part!"
+  }
+]

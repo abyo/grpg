@@ -11,6 +11,7 @@
 # Ideas
 
 - Glossary with pagination?
+- Have multiple classes (buff if you have them)
 - Complete tutorial command
 - Add an info command
 - Tokens (like Median, uberboss)

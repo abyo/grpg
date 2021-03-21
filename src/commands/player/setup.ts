@@ -1,7 +1,7 @@
 import { Command } from 'discord-akairo';
 import { Message, MessageEmbed, MessageAttachment } from 'discord.js';
 import { Players } from '../../structures/models/Players';
-import pClasses from '../../assets/playerClasses/index.json';
+import pClasses from '../../structures/game/data/classes.json';
 
 export default class SetupCommand extends Command {
   public constructor() {
@@ -33,7 +33,7 @@ export default class SetupCommand extends Command {
     if (!className.toLowerCase().match(/^(clerc)$/)) return message.util!.send(`This class doesn\'t exist (classes available -> \`${pClasses.map(e => e.name).join('|')}\`).`);
 
     const classInfo = pClasses.find(e => e.name.toLowerCase() == className.toLowerCase());
-    const classImg: any = new MessageAttachment(`./src/assets/playerClasses/${className.toLowerCase()}.png`);
+    const classImg: any = new MessageAttachment(`./src/game/data/img/${className.toLowerCase()}.png`);
 
     if (select) {
       const player = await this.client.player.get(message.member!);

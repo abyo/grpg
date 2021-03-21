@@ -1,6 +1,6 @@
 import { Command } from 'discord-akairo';
 import { Message } from 'discord.js';
-import guides from '../../assets/guides/index.json';
+import guides from './tutorials.json';
 import { MessageEmbed } from 'discord.js';
 
 export default class TutorialCommand extends Command {
