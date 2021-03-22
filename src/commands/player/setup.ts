@@ -42,7 +42,8 @@ export default class SetupCommand extends Command {
         id: message.author.id,
         guildId: message.guild!.id,
         className: classInfo!.name,
-        attributs: classInfo!.attributs
+        attributs: classInfo!.attributs,
+        gear: classInfo!.gear
       });
       return message.util!.send(`Congratulation, you are now a \`${classInfo!.name}\`, you can start your adventure!`);
     }
