@@ -41,7 +41,8 @@ export default class SetupCommand extends Command {
       await Players.create({
         id: message.author.id,
         guildId: message.guild!.id,
-        className: classInfo!.name
+        className: classInfo!.name,
+        attributs: classInfo!.attributs
       });
       return message.util!.send(`Congratulation, you are now a \`${classInfo!.name}\`, you can start your adventure!`);
     }

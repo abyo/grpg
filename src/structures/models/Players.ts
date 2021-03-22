@@ -5,13 +5,18 @@ export interface Players extends Document {
   guildId: string,
   className: string,
   level: number,
-  armors: {
-    head: number,
-    chest: number
+  gear: {
+    helm: string,
+    chest: string,
+    legs: string,
+    boots: string
   },
   attributs: {
     str: number,
-    dex: number
+    dex: number,
+    int: number,
+    vit: number,
+    def: number
   }
 }
 
@@ -23,25 +28,19 @@ const PlayersSchema = new Schema({
     type: Number,
     default: 1
   },
-  armors: {
-    head: {
-      type: Number,
-      default: 3
-    },
-    chest: {
-      type: Number,
-      default: 4
-    }
+  gear: {
+    helm: String,
+    chest: String,
+    legs: String,
+    boots: String,
+    weapon: String
   },
   attributs: {
-    str: {
-      type: Number,
-      default: 4
-    },
-    dex: {
-      type: Number,
-      default: 2
-    }
+    str: Number,
+    dex: Number,
+    int: Number,
+    vit: Number,
+    def: Number
   }
 });
 
