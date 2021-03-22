@@ -5,6 +5,15 @@ export interface Players extends Document {
   guildId: string,
   className: string,
   level: number,
+  monster: {
+    name: string,
+    hp: number,
+    att: number,
+    pdr: number,
+    mdr: number,
+    description: string,
+    level: number
+  }
   gear: {
     helm: string,
     chest: string,
@@ -27,6 +36,36 @@ const PlayersSchema = new Schema({
   level: {
     type: Number,
     default: 1
+  },
+  monster: {
+    name: {
+      type: String,
+      default: "Evil Sprout"
+    },
+    hp: {
+      type: Number,
+      default: 15
+    },
+    att: {
+      type: Number,
+      default: 10
+    },
+    pdr: {
+      type: Number,
+      default: 10
+    },
+    mdr: {
+      type: Number,
+      default: 10
+    },
+    description: {
+      type: String,
+      default: "It's evil!"
+    },
+    level: {
+      type: Number,
+      default: 1
+    }
   },
   gear: {
     helm: String,
