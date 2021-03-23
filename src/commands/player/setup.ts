@@ -43,6 +43,7 @@ export default class SetupCommand extends Command {
         guildId: message.guild!.id,
         className: classInfo!.name,
         attributs: classInfo!.attributs,
+        hp: classInfo!.hp,
         gear: classInfo!.gear
       });
       return message.util!.send(`Congratulation, you are now a \`${classInfo!.name}\`, you can start your adventure!`);

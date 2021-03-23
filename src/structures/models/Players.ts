@@ -5,6 +5,7 @@ export interface Players extends Document {
   guildId: string,
   className: string,
   level: number,
+  hp: number,
   monster: {
     name: string,
     hp: number,
@@ -33,6 +34,7 @@ const PlayersSchema = new Schema({
   id: String,
   guildId: String,
   className: String,
+  hp: Number,
   level: {
     type: Number,
     default: 1
