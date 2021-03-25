@@ -32,6 +32,7 @@ export default class Battle extends Mechanics {
     \`\`\`diff
     + You (${this.message.member!.displayName}) have ${playerHealth}/100pv left
     - ${this.monster!.name} (lv.${this.monster!.level}) has ${monsterHealth < 0 ? 0 : monsterHealth}pv left
+    ${monsterHealth < 0 ? `--- ${monsterHealth.toString().replace('-', '')} damage overkill!` : ''}
     \`\`\`
     `
     
@@ -45,6 +46,6 @@ export default class Battle extends Mechanics {
     const expReward = this.player.exp += this.monster!.exp;
     const newMonster = this.newMonster.generateMonster(this.player!.level);
     await this.db.update(this.message.member!, { monster: newMonster, gold: goldReward, exp: expReward });
-    return this.message.util!.send(`Congratulations, you have killed \`${this.monster!.name}\` and you got \`${this.monster!.exp}\` experience and \`${this.monster!.gold}\`gold!`);
+    return this.message.util!.send(`Congratulations, you have killed \`${this.monster!.name}\` and you got \`${this.monster!.exp}\` experience points and \`${this.monster!.gold}\` gold coins!`);
   }
 }

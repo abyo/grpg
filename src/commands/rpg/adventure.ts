@@ -6,12 +6,12 @@ import Battle from '../../structures/game/battle';
 export default class AdventureCommand extends Command {
   public constructor() {
     super('adventure', {
-      aliases: ['adventure', 'ad'],
+      aliases: ['adventure', 'adv'],
       description: {
         content: 'The adventure command makes you fight again random monsters.',
         usage: '(ad)venture',
         subCommand: '',
-        examples: ['adventure', 'ad']
+        examples: ['adventure', 'adv']
       },
       category: 'Rpg',
       cooldown: 8000,
