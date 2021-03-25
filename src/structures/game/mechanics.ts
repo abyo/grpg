@@ -1,6 +1,5 @@
 import { Players } from '../models/Players';
 import items from '../game/data/items.json';
-import monsters from '../game/data/monsters.json';
 
 export default class Mechanics {
   public player: Players;
@@ -12,7 +11,16 @@ export default class Mechanics {
   }
 
   // Player Mechanics
-  public defense(): number {
+  public playerAttack() {
+    const playerMultiplier = this.calculatePlayerDmgMultiplier();
+    const weapon = items.find(e => e.name == this.player.gear.weapon);
+    const playerMaxAttack = Math.floor(playerMultiplier * (this.player.attributs.str * weapon?.weaponatt!));
+    const playerMinAttack = Math.floor(0.85 * (playerMultiplier * (this.player.attributs.str * weapon?.weaponatt!)));
+    const playerAttackRange = this.generateRange(playerMinAttack, playerMaxAttack);
+    return playerAttackRange[Math.floor(Math.random() * playerAttackRange.length)];
+  }
+
+  private defense(): number {
     const addedDef = this.calculateAddedDef();
     return Math.floor(1.5 * this.player.attributs.str + 0.4 * (this.player.attributs.dex + this.player.attributs.int) + addedDef);
   }
@@ -26,6 +34,11 @@ export default class Mechanics {
     return addedDef;
   }
 
+  private calculatePlayerDmgMultiplier(): number {
+    const dmgReduction = (1 - (this.player.arpen / 100)) * (this.monster.pdr / 100);
+    return 1 - dmgReduction;
+  }
+
   // Monster Mechanics
   public monsterAttack(): number {
     const ratios = this.calculateRatioOnLevelDifference();
@@ -33,14 +46,13 @@ export default class Mechanics {
     const monsterMinAttack = Math.floor(ratios.monsterAttackRatio * (0.85 * this.monster.att - (ratios.playerDefRatio * totalPlayerDef)));
     const monsterMaxAttack = Math.floor(ratios.monsterAttackRatio * (this.monster.att - (ratios.playerDefRatio * totalPlayerDef)));
     const monsterAttackRange = this.generateRange(monsterMinAttack, monsterMaxAttack);
-    return Math.floor(Math.random() * monsterAttackRange.length)
+    return monsterAttackRange[Math.floor(Math.random() * monsterAttackRange.length)];
   }
 
   private calculateRatioOnLevelDifference(): Ratios {
-    const monster = monsters.find(e => e.name == this.player.monster.name);
     let playerDefRatio: number = 0.55;
     let monsterAttackRatio: number = 0.85;
-    const levelDifference: number = this.player.level - monster!.level;
+    const levelDifference: number = this.player.level - this.monster!.level;
 
     switch(levelDifference) {
       case 5: {

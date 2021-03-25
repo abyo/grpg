@@ -7,6 +7,7 @@
 # Features
 
 - Add crit/damage/defense formula
+- Add ARPEN stat to penetrate PDR
 
 # Ideas
 

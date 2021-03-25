@@ -6,6 +6,7 @@ export interface Players extends Document {
   className: string,
   level: number,
   hp: number,
+  arpen: number,
   monster: {
     name: string,
     hp: number,
@@ -19,7 +20,8 @@ export interface Players extends Document {
     helm: string,
     chest: string,
     legs: string,
-    boots: string
+    boots: string,
+    weapon: string
   },
   attributs: {
     str: number,
@@ -35,6 +37,10 @@ const PlayersSchema = new Schema({
   guildId: String,
   className: String,
   hp: Number,
+  arpen: {
+    type: Number,
+    default: 0
+  },
   level: {
     type: Number,
     default: 1
