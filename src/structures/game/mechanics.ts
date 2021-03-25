@@ -1,11 +1,12 @@
 import { Players } from '../models/Players';
 import items from '../game/data/items.json';
+import { IMonsters } from '../../util/Interface';
 
 export default class Mechanics {
   public player: Players;
-  public monster: Monsters;
+  public monster: IMonsters;
 
-  public constructor(player: Players, monster: Monsters) {
+  public constructor(player: Players, monster: IMonsters) {
     this.player = player;
     this.monster = monster;
   }
@@ -126,14 +127,4 @@ export default class Mechanics {
 export interface Ratios {
   playerDefRatio: number,
   monsterAttackRatio: number
-}
-
-export interface Monsters {
-  name: string,
-  hp: number,
-  att: number,
-  pdr: number,
-  mdr: number,
-  description: string,
-  level:number
 }

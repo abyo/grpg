@@ -5,11 +5,15 @@ export interface Players extends Document {
   guildId: string,
   className: string,
   level: number,
+  gold: number,
+  exp: number,
   hp: number,
   arpen: number,
   monster: {
     name: string,
     hp: number,
+    exp: number,
+    gold: number,
     att: number,
     pdr: number,
     mdr: number,
@@ -36,6 +40,14 @@ const PlayersSchema = new Schema({
   id: String,
   guildId: String,
   className: String,
+  gold: {
+    type: Number,
+    default: 0
+  },
+  exp: {
+    type: Number,
+    default: 0
+  },
   hp: Number,
   arpen: {
     type: Number,
@@ -52,11 +64,19 @@ const PlayersSchema = new Schema({
     },
     hp: {
       type: Number,
-      default: 15
+      default: 25
+    },
+    exp: {
+      type: Number,
+      default: 3
+    },
+    gold: {
+      type: Number,
+      default: 2
     },
     att: {
       type: Number,
-      default: 10
+      default: 13
     },
     pdr: {
       type: Number,
@@ -68,7 +88,7 @@ const PlayersSchema = new Schema({
     },
     description: {
       type: String,
-      default: "It's evil!"
+      default: "It's alive and evil!"
     },
     level: {
       type: Number,

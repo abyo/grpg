@@ -19,8 +19,8 @@ export default class AdventureCommand extends Command {
     });
   }
 
-  // @ts-ignore
   public async exec(message: Message): Promise<Message> {
+    // TODO: add info subcommand
     const player: Players = await this.client.player.get(message.member!);
     const adventure = new Battle(player, player.monster, message);
     return adventure.skirmish();
