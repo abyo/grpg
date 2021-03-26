@@ -9,9 +9,9 @@ export default class SetupCommand extends Command {
       aliases: ['setup'],
       description: {
         content: 'The setup command allow you to choose a class for your adventure.',
-        usage: 'setup [className] <--select>',
+        usage: 'setup [className] <-(-s)elect>',
         subCommand: '',
-        examples: ['setup Clerc', 'setup Clerc --select']
+        examples: ['setup Clerc', 'setup Clerc --select', 'setup Clerc -s']
       },
       category: 'Player',
       ratelimit: 2,
@@ -22,7 +22,7 @@ export default class SetupCommand extends Command {
         {
           id: 'select',
           match: 'flag',
-          flag: '--select'
+          flag: ['--select', '-s']
         }
       ]
     });
