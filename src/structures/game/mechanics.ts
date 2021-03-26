@@ -40,6 +40,10 @@ export default class Mechanics {
     return 1 - dmgReduction;
   }
 
+  // private calculateExpNeededToNextLevel() {
+
+  // }
+
   // Monster Mechanics
   public monsterAttack(): number {
     const ratios = this.calculateRatioOnLevelDifference();

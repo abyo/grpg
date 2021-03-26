@@ -28,24 +28,25 @@ export default class Battle extends Mechanics {
       'monster.hp': monsterHealth
     });
 
-    const skirmishReport = stripIndents`
+    // TODO: Add round increment after each round in DB
+    
+    let battleReport = stripIndents`
+    You deal \`${playerDmg}\` and receive \`${monsterDmg}\` damage from \`${this.monster!.name}\`
     \`\`\`diff
-    + You (${this.message.member!.displayName}) have ${playerHealth}/100pv left
+    + You (${this.message.member!.displayName}) have ${playerHealth}/${100 + (this.player.level * 10 - 10)}pv left
     - ${this.monster!.name} (lv.${this.monster!.level}) has ${monsterHealth < 0 ? 0 : monsterHealth}pv left
-    ${monsterHealth < 0 ? `--- ${monsterHealth.toString().replace('-', '')} damage overkill!` : ''}
-    \`\`\`
     `
     
-    // TODO: Add round increment after each round in DB
-    this.message.util!.send(`You deal \`${playerDmg}\` and receive \`${monsterDmg}\` damage from \`${this.monster!.name}\`!`);
+    if (monsterHealth > 0) {
+      battleReport += '\`\`\`';
+      return this.message.util!.send(battleReport);
+    }
 
-    if (monsterHealth > 0) return this.message.util!.send(skirmishReport);
-
-    this.message.util!.send(skirmishReport);
     const goldReward = this.player.gold += this.monster!.gold;
     const expReward = this.player.exp += this.monster!.exp;
     const newMonster = this.newMonster.generateMonster(this.player!.level);
     await this.db.update(this.message.member!, { monster: newMonster, gold: goldReward, exp: expReward });
-    return this.message.util!.send(`Congratulations, you have killed \`${this.monster!.name}\` and you got \`${this.monster!.exp}\` experience points and \`${this.monster!.gold}\` gold coins!`);
+    battleReport += `\n---\nCongratulations, ${this.monster!.name} is dead! (${monsterHealth.toString().replace('-', '')} damage overkill)\nHere's your reward: ${this.monster!.exp} experience points and ${this.monster!.gold} gold coins!\n\`\`\``;
+    return this.message.util!.send(battleReport);
   }
 }

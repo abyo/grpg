@@ -8,6 +8,7 @@
 
 - Add crit/damage/defense formula
 - Add ARPEN stat to penetrate PDR
+- Add fast battle (don't stop until monster is dead)
 
 # Ideas
 
