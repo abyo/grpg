@@ -40,9 +40,19 @@ export default class Mechanics {
     return 1 - dmgReduction;
   }
 
-  // private calculateExpNeededToNextLevel() {
-
-  // }
+  public calculateExpNeededToNextLevel(): number {
+    let expMultiplier: number;
+    
+    if (this.player.level > 1 && this.player.level < 10) expMultiplier = 1.2;
+    else if (this.player.level == 10) expMultiplier = 1.7;
+    else if (this.player.level > 10 && this.player.level < 20) expMultiplier = 1.2;
+    else if (this.player.level == 20) expMultiplier = 1.7;
+    else if (this.player.level > 20 && this.player.level < 30) expMultiplier = 1.2;
+    else if (this.player.level == 30) expMultiplier = 1.7;
+    else expMultiplier = 1.2;
+    
+    return Math.floor(this.player.totalExp * expMultiplier);
+  }
 
   // Monster Mechanics
   public monsterAttack(): number {

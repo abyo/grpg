@@ -7,6 +7,7 @@ export interface Players extends Document {
   level: number,
   gold: number,
   exp: number,
+  totalExp: number,
   hp: number,
   arpen: number,
   monster: {
@@ -47,6 +48,10 @@ const PlayersSchema = new Schema({
   exp: {
     type: Number,
     default: 0
+  },
+  totalExp: {
+    type: Number,
+    default: 15
   },
   hp: Number,
   arpen: {
