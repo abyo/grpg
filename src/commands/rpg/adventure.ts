@@ -28,13 +28,12 @@ export default class AdventureCommand extends Command {
   }
 
   public async exec(message: Message, { info }: { info: string }): Promise<Message> {
-    // TODO: add info subcommand
     const player: Players = await this.client.player.get(message.member!);
 
     if (info) return message.util!.send(stripIndents`
     \`\`\`
     Current Monster -> ${player.monster.name} (lv.${player.monster.level})
-    HP: ${player.monster.level} | ATT: ${player.monster.att} | PDR: ${player.monster.pdr} | MDR: ${player.monster.mdr}
+    HP: ${player.monster.hp} | ATT: ${player.monster.att} | PDR: ${player.monster.pdr} | MDR: ${player.monster.mdr}
     Rewards: ${player.monster.exp} experience points and ${player.monster.gold} gold coins.
     Description: ${player.monster.description}
     \`\`\``);

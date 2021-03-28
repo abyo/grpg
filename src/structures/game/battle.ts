@@ -42,10 +42,10 @@ export default class Battle extends Mechanics {
       return this.message.util!.send(battleReport);
     }
 
-    const goldReward = this.player.gold += this.monster!.gold;
-    const expReward = this.player.exp += this.monster!.exp;
     const newMonster = this.newMonster.generateMonster(this.player!.level);
-    await this.db.update(this.message.member!, { monster: newMonster, gold: goldReward, exp: expReward });
+
+    await this.db.update(this.message.member!, { monster: newMonster, gold: this.player.gold, exp: this.player.exp });
+
     battleReport += `\n---\nCongratulations, ${this.monster!.name} is dead! (${monsterHealth.toString().replace('-', '')} damage overkill)\nHere's your reward: ${this.monster!.exp} experience points and ${this.monster!.gold} gold coins!`;
 
     if (this.player.exp > this.calculateExpNeededToNextLevel()) {
@@ -53,7 +53,9 @@ export default class Battle extends Mechanics {
       this.player.totalExp += this.calculateExpNeededToNextLevel();
       this.player.level += 1;
       this.player.hp = 100 + (this.player.level * 10 - 10);
+
       await this.db.update(this.message.member!, { totalExp: this.player.totalExp, exp: expLeft, hp: this.player.hp, level: this.player.level });
+      
       battleReport += `\n+ You\'re leveling up aswell, you\'re now level ${this.player.level}!\n\`\`\``;
       return this.message.util!.send(battleReport);
     }
