@@ -43,12 +43,10 @@ export default class Mechanics {
   public calculateExpNeededToNextLevel(): number {
     let expMultiplier: number;
     
-    if (this.player.level > 1 && this.player.level < 10) expMultiplier = 1.2;
-    else if (this.player.level == 10) expMultiplier = 1.7;
-    else if (this.player.level > 10 && this.player.level < 20) expMultiplier = 1.2;
-    else if (this.player.level == 20) expMultiplier = 1.7;
-    else if (this.player.level > 20 && this.player.level < 30) expMultiplier = 1.2;
-    else if (this.player.level == 30) expMultiplier = 1.7;
+    if (this.player.level == 5) expMultiplier = 1.4;
+    else if (this.player.level == 10) expMultiplier = 1.4;
+    else if (this.player.level == 20) expMultiplier = 1.4;
+    else if (this.player.level == 30) expMultiplier = 1.4;
     else expMultiplier = 1.2;
     
     return Math.floor(this.player.totalExp * expMultiplier);

@@ -19,6 +19,7 @@ export default class Battle extends Mechanics {
   public async skirmish(): Promise<Message> {
     const playerDmg = this.playerAttack();
     const monsterDmg = this.monsterAttack();
+    const newMonster = this.newMonster.generateMonster(this.player!.level);
 
     const playerHealth = this.player.hp -= monsterDmg;
     const monsterHealth = this.player.monster.hp -= playerDmg;
@@ -37,12 +38,18 @@ export default class Battle extends Mechanics {
     - ${this.monster!.name} (lv.${this.monster!.level}) has ${monsterHealth < 0 ? 0 : monsterHealth}hp left
     `
     
+    if (playerHealth <= 0) {
+      battleReport += '\n---\n- You are dead! You\'re losing 50% of your exp! Better luck next time!\n\`\`\`';
+      this.player.exp *= 0.5;
+      this.player.hp = 100 + (this.player.level * 10 - 10);
+      await this.db.update(this.message.member!, { monster: newMonster, hp: this.player.hp, exp: this.player.exp });
+      return this.message.util!.send(battleReport);
+    }
+
     if (monsterHealth > 0) {
       battleReport += '\`\`\`';
       return this.message.util!.send(battleReport);
     }
-
-    const newMonster = this.newMonster.generateMonster(this.player!.level);
 
     await this.db.update(this.message.member!, { monster: newMonster, gold: this.player.gold, exp: this.player.exp });
 
@@ -56,7 +63,7 @@ export default class Battle extends Mechanics {
 
       await this.db.update(this.message.member!, { totalExp: this.player.totalExp, exp: expLeft, hp: this.player.hp, level: this.player.level });
       
-      battleReport += `\n+ You\'re leveling up aswell, you\'re now level ${this.player.level}!\n\`\`\``;
+      battleReport += `\n+ You're leveling up aswell, you're now level ${this.player.level}!\n\`\`\``;
       return this.message.util!.send(battleReport);
     }
 
