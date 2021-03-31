@@ -6,6 +6,7 @@ export interface Players extends Document {
   className: string,
   level: number,
   gold: number,
+  area: string,
   exp: number,
   totalExp: number,
   hp: number,
@@ -15,6 +16,7 @@ export interface Players extends Document {
     hp: number,
     exp: number,
     gold: number,
+    area: string,
     att: number,
     pdr: number,
     mdr: number,
@@ -44,6 +46,10 @@ const PlayersSchema = new Schema({
   gold: {
     type: Number,
     default: 0
+  },
+  area: {
+    type: String,
+    default: "Starter Area"
   },
   exp: {
     type: Number,
@@ -78,6 +84,10 @@ const PlayersSchema = new Schema({
     gold: {
       type: Number,
       default: 2
+    },
+    area: {
+      type: String,
+      default: "Starter Area"
     },
     att: {
       type: Number,

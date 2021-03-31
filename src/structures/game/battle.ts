@@ -19,7 +19,7 @@ export default class Battle extends Mechanics {
   public async skirmish(): Promise<Message> {
     const playerDmg = this.playerAttack();
     const monsterDmg = this.monsterAttack();
-    const newMonster = this.newMonster.generateMonster(this.player!.level);
+    const newMonster = this.newMonster.generateMonster(this.player!.level, this.player!.area);
 
     const playerHealth = this.player.hp -= monsterDmg;
     const monsterHealth = this.player.monster.hp -= playerDmg;
@@ -50,6 +50,9 @@ export default class Battle extends Mechanics {
       battleReport += '\`\`\`';
       return this.message.util!.send(battleReport);
     }
+
+    this.player.gold += this.player.monster.gold;
+    this.player.exp += this.player.monster.exp;
 
     await this.db.update(this.message.member!, { monster: newMonster, gold: this.player.gold, exp: this.player.exp });
 
