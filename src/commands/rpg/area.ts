@@ -1,6 +1,6 @@
-import { stripIndents } from 'common-tags';
-import { Command } from 'discord-akairo';
-import { Message } from 'discord.js';
+import {stripIndents} from 'common-tags';
+import {Command} from 'discord-akairo';
+import {Message} from 'discord.js';
 
 export default class AreaCommand extends Command {
   public constructor() {
@@ -22,17 +22,17 @@ export default class AreaCommand extends Command {
     });
   }
 
-  public async exec(message: Message, { newArea }: { newArea: string }): Promise<Message | Message[]> {
+  public async exec(message: Message, {newArea}: {newArea: string}): Promise<Message | Message[]> {
     if (!newArea) return message.util!.send(stripIndents`
       \`\`\`accesslog
       [Level Range :: Area]
       
-      1-3 :: Starter Area
-      2-5 :: River
-    \`\`\``);
+        1-3 :: Starter Area
+        2-5 :: River
+      \`\`\``);
     newArea = this.capitalize(newArea);
     if (!newArea.match(/^(Starter Area|River)$/)) return message.util!.send(`This area doesn't exist!`);
-    await this.client.player.update(message.member!, { area: newArea });
+    await this.client.player.update(message.member!, {area: newArea});
     return message.util!.send(`You're now in -> \`${newArea}\``);
   }
 

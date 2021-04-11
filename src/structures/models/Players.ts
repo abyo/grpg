@@ -4,6 +4,11 @@ export interface Players extends Document {
   id: string,
   guildId: string,
   className: string,
+  quest: {
+    haveQuest: boolean,
+    progress: number,
+    target: string
+  }
   level: number,
   gold: number,
   area: string,
@@ -43,6 +48,20 @@ const PlayersSchema = new Schema({
   id: String,
   guildId: String,
   className: String,
+  quest: {
+    haveQuest: {
+      type: Boolean,
+      default: false
+    },
+    progress: {
+      type: Number,
+      default: 0
+    },
+    target: {
+      type: String,
+      default: "None"
+    }
+  },
   gold: {
     type: Number,
     default: 0

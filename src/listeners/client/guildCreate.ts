@@ -1,6 +1,6 @@
-import { Listener } from 'discord-akairo';
-import { Guild, TextChannel, MessageEmbed } from 'discord.js';
-import { Guilds } from '../../structures/models/Guilds';
+import {Listener} from 'discord-akairo';
+import {Guild, TextChannel, MessageEmbed} from 'discord.js';
+import {Guilds} from '../../structures/models/Guilds';
 
 export default class GuildCreateListener extends Listener {
   public constructor() {
@@ -21,7 +21,7 @@ export default class GuildCreateListener extends Listener {
       .setTimestamp(Date.now())
       .setFooter('GRPG Joined a guild!');
 
-    await Guilds.create({ id: guild!.id }, async(err: any) => {
+    await Guilds.create({id: guild!.id}, async (err: any) => {
       if (err) return (logChannel as TextChannel).send('something went wrong!');
       return (logChannel as TextChannel).send(logEmbed);
     });
