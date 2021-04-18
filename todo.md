@@ -6,25 +6,18 @@
 
 # Working on it
 
-- Add crit formula
 - Quests
+- Modify github workflow
 
 # Ideas
 
-- Add fast battle (don't stop until monster is dead)
+- Sleeping command to gain health back (cd on adventure command)
+- Add fast battle only (don't stop until monster is dead)
 - Glossary with pagination?
-- Have multiple classes (buff if you have them)
 - Complete tutorial command
 - Add an info command
-- Tokens (like Median, uberboss)
-- House (more resources)
 - Story mode (awards)
 - Beginner token (more exp + more dmg?) -> disappear after level 10 (except mvp)
-- Spells for different classes
-- Different types of adventure embed
-- Use progress bar for boss health
-- Different mobs in different areas
-- Add a tutorial command
 - Different styles of adventure (embed/block)
 
 # Completed
@@ -34,4 +27,7 @@
 - Add formulas
   - Damage (player/monster)
   - Defense
-  - ARPEN/PDR
+
+# To Remove
+
+- ARPEN/PDR

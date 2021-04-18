@@ -9,10 +9,10 @@
     "url": "https://github.com/abyo/grpg"
   },
   "bugs": {
-      "url": "https://github.com/abyo/grpg/issues"
+    "url": "https://github.com/abyo/grpg/issues"
   },
   "homepage": "https://github.com/abyo/grpg",
-    "license": "MIT",
+  "license": "MIT",
   "scripts": {
     "dev": "./node_modules/.bin/tsc-watch --onSuccess \"node .\""
   },
