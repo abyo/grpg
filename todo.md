@@ -1,19 +1,17 @@
-# ToDo (min/max)
-
-- Fix this todo
-- Change function `get` on GuildsProvider, query parameter?
-  - Change prefix in handler
-
 # Working on it
 
-- Quests
-- Modify github workflow
+- Modify damage/defense formulas
+- Work on the NUMBER first
+
+# To add
+
+- Use energy to train skills
+- Sleeping command to gain health back (cd on adventure command)
+- Add fast battle only (don't stop until monster is dead)
 
 # Ideas
 
-- Sleeping command to gain health back (cd on adventure command)
-- Add fast battle only (don't stop until monster is dead)
-- Glossary with pagination?
+- Glossary with pagination
 - Complete tutorial command
 - Add an info command
 - Story mode (awards)
@@ -24,10 +22,8 @@
 
 - Adventure mode for progressing outside story
 - More exp in level range
-- Add formulas
-  - Damage (player/monster)
-  - Defense
 
 # To Remove
 
 - ARPEN/PDR
+- Turn/turn adventure
