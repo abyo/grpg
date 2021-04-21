@@ -1,5 +1,4 @@
 import { Players } from '../models/Players';
-import items from '../game/data/items.json';
 import { IMonsters } from '../../util/Interface';
 
 export default class Mechanics {
@@ -11,129 +10,11 @@ export default class Mechanics {
     this.monster = monster;
   }
 
-  // Player Mechanics
-  public playerAttack() {
-    const playerMultiplier = this.calculatePlayerDmgMultiplier();
-    const weapon = items.find(e => e.name == this.player.gear.weapon);
-    const playerMaxAttack = Math.floor(playerMultiplier * (this.player.attributs.str * weapon?.weaponatt!));
-    const playerMinAttack = Math.floor(0.85 * (playerMultiplier * (this.player.attributs.str * weapon?.weaponatt!)));
-    const playerAttackRange = this.generateRange(playerMinAttack, playerMaxAttack);
-    return playerAttackRange[Math.floor(Math.random() * playerAttackRange.length)];
-  }
+  // public playerAttack() {}
 
-  private defense(): number {
-    const addedDef = this.calculateAddedDef();
-    return Math.floor(1.5 * this.player.attributs.str + 0.4 * (this.player.attributs.dex + this.player.attributs.int) + addedDef);
-  }
+  // private defense(): number {}
 
-  private calculateAddedDef(): number {
-    const helm = items.find(e => e.name == this.player.gear.helm);
-    const chest = items.find(e => e.name == this.player.gear.chest);
-    const legs = items.find(e => e.name == this.player.gear.legs);
-    const boots = items.find(e => e.name == this.player.gear.boots);
-    const addedDef = helm?.armor! + chest?.armor! + legs?.armor! + boots?.armor!;
-    return addedDef;
-  }
-
-  private calculatePlayerDmgMultiplier(): number {
-    const dmgReduction = (1 - (this.player.arpen / 100)) * (this.monster.pdr / 100);
-    return 1 - dmgReduction;
-  }
-
-  public calculateExpNeededToNextLevel(): number {
-    let expMultiplier: number;
-    
-    if (this.player.level == 5) expMultiplier = 1.4;
-    else if (this.player.level == 10) expMultiplier = 1.4;
-    else if (this.player.level == 20) expMultiplier = 1.4;
-    else if (this.player.level == 30) expMultiplier = 1.4;
-    else expMultiplier = 1.2;
-    
-    return Math.floor(this.player.totalExp * expMultiplier);
-  }
-
-  // Monster Mechanics
-  public monsterAttack(): number {
-    const ratios = this.calculateRatioOnLevelDifference();
-    const totalPlayerDef = this.defense();
-    const monsterMinAttack = Math.floor(ratios.monsterAttackRatio * (0.85 * this.monster.att - (ratios.playerDefRatio * totalPlayerDef)));
-    const monsterMaxAttack = Math.floor(ratios.monsterAttackRatio * (this.monster.att - (ratios.playerDefRatio * totalPlayerDef)));
-    const monsterAttackRange = this.generateRange(monsterMinAttack, monsterMaxAttack);
-    return monsterAttackRange[Math.floor(Math.random() * monsterAttackRange.length)];
-  }
-
-  private calculateRatioOnLevelDifference(): Ratios {
-    let playerDefRatio: number = 0.55;
-    let monsterAttackRatio: number = 0.85;
-    const levelDifference: number = this.player.level - this.monster!.level;
-
-    switch(levelDifference) {
-      case 5: {
-        playerDefRatio = 0.8;
-        monsterAttackRatio = 0.775;
-        break;
-      }
-      case 4: {
-        playerDefRatio = 0.75;
-        monsterAttackRatio = 0.79;
-        break;
-      }
-      case 3: {
-        playerDefRatio = 0.7;
-        monsterAttackRatio = 0.805;
-        break;
-      }
-      case 2: {
-        playerDefRatio = 0.65;
-        monsterAttackRatio = 0.82;
-        break;
-      }
-      case 1: {
-        playerDefRatio = 0.6;
-        monsterAttackRatio = 0.835;
-        break;
-      }
-      case 0: {
-        playerDefRatio = 0.55;
-        monsterAttackRatio = 0.85;
-        break;
-      }
-      case -1: {
-        playerDefRatio = 0.5;
-        monsterAttackRatio = 0.8575;
-        break;
-      }
-      case -2: {
-        playerDefRatio = 0.45;
-        monsterAttackRatio = 0.865;
-        break;
-      }
-      case -3: {
-        playerDefRatio = 0.4;
-        monsterAttackRatio = 0.8725;
-        break;
-      }
-      case -4: {
-        playerDefRatio = 0.35;
-        monsterAttackRatio = 0.88;
-        break;
-      }
-      case -5: {
-        playerDefRatio = 0.3;
-        monsterAttackRatio = 0.9;
-        break;
-      }
-      default: {
-        break;
-      }
-    }
-
-    return { playerDefRatio, monsterAttackRatio };
-  }
-
-  private generateRange(start: number, stop: number, step: number = 1): number[] {
-    return Array.from({ length: (stop - start) / step + 1}, (_, i) => start + (i * step));
-  }
+  // public monsterAttack(): number {}
 }
 
 export interface Ratios {
