@@ -60,11 +60,26 @@ const PlayersSchema = new Schema({
     }
   },
   gear: {
-    helm: String,
-    chest: String,
-    legs: String,
-    boots: String,
-    weapon: String
+    helm: {
+      type: String,
+      default: "None"
+    },
+    chest: {
+      type: String,
+      default: "None"
+    },
+    legs: {
+      type: String,
+      default: "None"
+    },
+    boots: {
+      type: String,
+      default: "None"
+    },
+    weapon: {
+      type: String,
+      default: "None"
+    }
   },
 });
 

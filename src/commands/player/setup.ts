@@ -22,7 +22,6 @@ export default class SetupCommand extends Command {
     if (player) return message.util!.reply('you can\'t start multiple adventures');
     await Players.create({
       id: message.author.id,
-      guildId: message.guild!.id,
       hp: 1,
     });
     return message.util!.send(`Congratulation, you are ready to start your adventure!`);

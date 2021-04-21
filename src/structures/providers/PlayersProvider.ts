@@ -4,7 +4,7 @@ import { Players } from '../models/Players';
 
 export class PlayersProvider {
   public async get(player: GuildMember): Promise<any> {
-    const data = await Players.findOne({ id: player.id, guildId: player.guild!.id });
+    const data = await Players.findOne({ id: player.id });
 		if (data) return data;
   }
 
