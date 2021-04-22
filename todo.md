@@ -12,6 +12,7 @@
 # Ideas
 
 - Complete tutorial command
+- Add adventure command/feature
 - Add an info command
 - Story mode (awards)
 - Beginner token (more exp + more dmg?) -> disappear after level 10 (except mvp)
