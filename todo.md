@@ -23,7 +23,3 @@
 - Adventure mode for progressing outside story
 - More exp in level range
 
-# To Remove
-
-- ARPEN/PDR
-- Turn/turn adventure
