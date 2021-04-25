@@ -6,15 +6,15 @@ That's the todo list for the bot, might change this later.
 
 - Basic damage/defense formula
 - Update player hp with command
+- Add fast battle only (don't stop until monster is dead)
 
 ## Working on it
 
-- Add fast battle only (don't stop until monster is dead)
+- Add energy to put into attack/defense
 
 ## Future features
 
 - Sleeping command to gain health back (cd on adventure command)
-- Use energy to train skills
 - Complete tutorial command
 - Add adventure command/feature
 - Add rebirth feature (save number)
