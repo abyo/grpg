@@ -8,6 +8,7 @@ That's the todo list for the bot, might change this later.
 - Update player hp with command
 - Add fast battle only (don't stop until monster is dead)
 - Add energy to put into attack/defense
+- Add a battle report
 
 ## Working on it
 
