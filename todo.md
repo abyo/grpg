@@ -8,14 +8,20 @@ That's the todo list for the bot, might change this later.
 - Update player hp with command
 - Add fast battle only (don't stop until monster is dead)
 - Add energy to put into attack/defense
-- Add a battle report
+- Add a very simple battle report
 
 ## Working on it
 
-- Add rebirth feature (save number)
+- Add new bosses and db update
+- Add energy to the update command
 
 ## Future features
 
+- Plan future features on project tab on Github
+- Add readme/changelog after first release
+- Add rebirth feature (save number)
+- Complete battle report
+- Add nuking flag to boss command (os every bosses if def/attk > monster attk/def)
 - Sleeping command to gain health back (cd on adventure command)
 - Complete tutorial command
 - Add adventure command/feature
