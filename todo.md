@@ -9,10 +9,10 @@ That's the todo list for the bot, might change this later.
 - Add fast battle only (don't stop until monster is dead)
 - Add energy to put into attack/defense
 - Add a very simple battle report
+- Add new bosses and db update
 
 ## Working on it
 
-- Add new bosses and db update
 - Add energy to the update command
 
 ## Future features
