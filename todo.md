@@ -10,9 +10,11 @@ That's the todo list for the bot, might change this later.
 - Add energy to put into attack/defense
 - Add a very simple battle report
 - Add new bosses and db update
+- Make a profil command
 
 ## Working on it
 
+- Modify help command
 - Add energy to the update command
 
 ## Future features
