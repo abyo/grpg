@@ -14,12 +14,12 @@ That's the todo list for the bot, might change this later.
 
 ## Working on it
 
-- Modify help command
 - Add energy to the update command
 
 ## Future features
 
 - Plan future features on project tab on Github
+- Modify help command
 - Add readme/changelog after first release
 - Add rebirth feature (save number)
 - Complete battle report
@@ -29,4 +29,5 @@ That's the todo list for the bot, might change this later.
 - Add adventure command/feature
 - Add an info command
 - Story mode (awards)
+- Add garden menu for fast energy
 - Different styles of adventure (embed/block)
