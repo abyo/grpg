@@ -16,6 +16,7 @@ That's the todo list for the bot, might change this later.
 
 - Add energy to the update command
 - Modify help command
+- Add more bosses and daily command
 
 ## Future features
 
