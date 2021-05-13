@@ -15,11 +15,11 @@ That's the todo list for the bot, might change this later.
 ## Working on it
 
 - Add energy to the update command
+- Modify help command
 
 ## Future features
 
 - Plan future features on project tab on Github
-- Modify help command
 - Add readme/changelog after first release
 - Add rebirth feature (save number)
 - Complete battle report
