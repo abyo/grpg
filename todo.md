@@ -21,6 +21,7 @@ That's the todo list for the bot, might change this later.
 ## Future features
 
 - Plan future features on project tab on Github
+- Add EN/FR languages (i118n)
 - Add readme/changelog after first release
 - Add rebirth feature (save number)
 - Complete battle report
